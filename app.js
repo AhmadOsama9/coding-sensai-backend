@@ -46,5 +46,12 @@ app.use("/api/code", require("./routes/code_example_route"));
 app.use("/api/assignment", require("./routes/assignment_route"));
 app.use("/api/project", require("./routes/project_route"));
 
+// Add a hello route for testing
+app.get("/hello", (req, res) => {
+  res.json({
+    message: "Hello World"
+  });
+});
+
 // Export the app for serverless-http
 module.exports.handler = serverless(app);
