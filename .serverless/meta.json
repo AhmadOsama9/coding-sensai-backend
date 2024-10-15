@@ -1,0 +1,79 @@
+{
+  "/home/ahmedosama/Documents/GitHub/coding-sensai-backend": {
+    "versionSfCore": null,
+    "versionFramework": "4.4.6",
+    "isWithinCompose": false,
+    "isCompose": false,
+    "composeOrgName": null,
+    "composeResolverProviders": {
+      "default-aws-credential-resolver": "<REDACTED>"
+    },
+    "composeServiceName": null,
+    "servicePath": "/home/ahmedosama/Documents/GitHub/coding-sensai-backend",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "your-service-name",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs14.x",
+        "stage": "dev",
+        "region": "us-east-1",
+        "versionFunctions": true
+      },
+      "functions": {
+        "app": {
+          "handler": "app.handler",
+          "events": [
+            {
+              "http": {
+                "path": "/api/{proxy+}",
+                "method": "any"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "serviceRawFile": "service: your-service-name\n\nprovider:\n  name: aws\n  runtime: nodejs14.x\n\nfunctions:\n  app:\n    handler: app.handler\n    events:\n      - http:\n          path: /api/{proxy+}\n          method: any\n",
+    "command": [
+      "offline"
+    ],
+    "options": {},
+    "error": {
+      "message": "Serverless command \"offline\" not found. Run \"serverless help\" for a list of all available commands.",
+      "code": "UNRECOGNIZED_CLI_COMMAND"
+    },
+    "params": {},
+    "machineId": "56a289791b00d75700927d17f6b78d30",
+    "stage": "dev",
+    "accessKeyV2": "<REDACTED>",
+    "accessKeyV1": "<REDACTED>",
+    "orgId": "4d7a3b12-bab3-4d00-8d45-5f8f4c73ab18",
+    "orgName": "codingsensai",
+    "userId": "cY6Pkpmx7dGW8RjpYt",
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "userName": "codingsensai",
+    "subscription": null,
+    "userEmail": "nexwe33@gmail.com",
+    "serviceProviderAwsRegion": "us-east-1",
+    "serviceProviderAwsCredentials": "<REDACTED>",
+    "serviceProviderAwsAccountId": "288761746733",
+    "projectType": "traditional",
+    "versionSf": "4.4.6",
+    "serviceProviderAwsCfStackName": "your-service-name-dev",
+    "serviceUniqueId": null,
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}
