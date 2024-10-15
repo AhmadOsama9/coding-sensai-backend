@@ -57,3 +57,17 @@ app.get("/api/", (req, res) => {
 
 // Export the app for serverless-http
 module.exports.handler = serverless(app);
+
+
+// For Testing
+// Export the app for serverless-http
+// const handler = serverless(app);
+// module.exports.handler = handler;
+
+// // For local testing
+// if (process.env.LOCAL_TEST) {
+//   const port = process.env.PORT || 3000;
+//   app.listen(port, () => {
+//     console.log(`Server is running on port: ${port}`);
+//   });
+// }
