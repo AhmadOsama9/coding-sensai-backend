@@ -1,11 +1,15 @@
-const express = require("express");
-require("dotenv").config();
-const cors = require("cors");
-const serverless = require("serverless-http");
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import serverless from "serverless-http";
 
-require("./auth/google_strategy");
-require("./auth/github_strategy");
-const { authenticateToken } = require("./middlewares/auth_middleware");
+// Load environment variables
+dotenv.config();
+
+// Import authentication strategies
+import "./auth/google_strategy.js";
+import "./auth/github_strategy.js";
+import { authenticateToken } from "./middlewares/auth_middleware.js";
 
 const app = express();
 app.use(express.json());
@@ -15,8 +19,6 @@ app.use(cors({
     "http://localhost:5173",
   ]
 }));
-
-// Middlewares
 
 // Middleware to protect all routes except public ones
 app.use((req, res, next) => {
@@ -36,16 +38,16 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use("/api/user/auth", require("./routes/user_auth_routes"));
-app.use("/api/payment", require("./routes/payment_routes"));
-app.use("/api/dashboard", require("./routes/dashboard_routes"));
-app.use("/api/course", require("./routes/course_route"));
-app.use("/api/milestone", require("./routes/milestone_route"));
-app.use("/api/mistake", require("./routes/common_mistake_route"));
-app.use("/api/resource", require("./routes/recourse_route"));
-app.use("/api/code", require("./routes/code_example_route"));
-app.use("/api/assignment", require("./routes/assignment_route"));
-app.use("/api/project", require("./routes/project_route"));
+app.use("/api/user/auth", (await import("./routes/user_auth_routes.js")).default);
+app.use("/api/payment", (await import("./routes/payment_routes.js")).default);
+app.use("/api/dashboard", (await import("./routes/dashboard_routes.js")).default);
+app.use("/api/course", (await import("./routes/course_route.js")).default);
+app.use("/api/milestone", (await import("./routes/milestone_route.js")).default);
+app.use("/api/mistake", (await import("./routes/common_mistake_route.js")).default);
+app.use("/api/resource", (await import("./routes/recourse_route.js")).default);
+app.use("/api/code", (await import("./routes/code_example_route.js")).default);
+app.use("/api/assignment", (await import("./routes/assignment_route.js")).default);
+app.use("/api/project", (await import("./routes/project_route.js")).default);
 
 // Add a hello route for testing
 app.get("/api/", (req, res) => {
@@ -54,20 +56,13 @@ app.get("/api/", (req, res) => {
   });
 });
 
-
 // Export the app for serverless-http
-module.exports.handler = serverless(app);
+export const handler = serverless(app);
 
-
-// For Testing
-// Export the app for serverless-http
-// const handler = serverless(app);
-// module.exports.handler = handler;
-
-// // For local testing
-// if (process.env.LOCAL_TEST) {
-//   const port = process.env.PORT || 3000;
-//   app.listen(port, () => {
-//     console.log(`Server is running on port: ${port}`);
-//   });
-// }
+// For local testing
+if (process.env.LOCAL_TEST) {
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
+  });
+}
