@@ -47,13 +47,4 @@ app.use("/api/assignment", require("./routes/assignment_route"));
 app.use("/api/project", require("./routes/project_route"));
 
 // Export the app for serverless-http
-const handler = serverless(app);
-module.exports.handler = handler;
-
-// For local testing
-if (process.env.LOCAL_TEST) {
-  const port = process.env.PORT || 3000;
-  app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-  });
-}
+module.exports.handler = serverless(app);
