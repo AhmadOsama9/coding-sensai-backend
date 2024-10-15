@@ -23,7 +23,8 @@ app.use((req, res, next) => {
   const publicRoutePatterns = [
     /^\/api\/user\/auth/, // Pattern for user auth routes
     /^\/api\/course$/, // Exact match for /api/course
-    /^\/api\/course\/overview\/[^\/]+$/ // Pattern for course overview with course_id
+    /^\/api\/course\/overview\/[^\/]+$/, // Pattern for course overview with course_id
+    /^\/api\/$/
   ];
 
   const isPublicRoute = publicRoutePatterns.some(pattern => pattern.test(req.path));
@@ -52,6 +53,7 @@ app.get("/api/", (req, res) => {
     message: "Hello World"
   });
 });
+
 
 // Export the app for serverless-http
 module.exports.handler = serverless(app);

@@ -23,7 +23,8 @@ app.use((req, res, next) => {
   const publicRoutePatterns = [
     /^\/api\/user\/auth/, // Pattern for user auth routes
     /^\/api\/course$/, // Exact match for /api/course
-    /^\/api\/course\/overview\/[^\/]+$/ // Pattern for course overview with course_id
+    /^\/api\/course\/overview\/[^\/]+$/, // Pattern for course overview with course_id
+    /^\/api\/$/
   ];
 
   const isPublicRoute = publicRoutePatterns.some(pattern => pattern.test(req.path));
@@ -45,6 +46,13 @@ app.use("/api/resource", require("./routes/recourse_route"));
 app.use("/api/code", require("./routes/code_example_route"));
 app.use("/api/assignment", require("./routes/assignment_route"));
 app.use("/api/project", require("./routes/project_route"));
+
+// Add a hello route for testing
+app.get("/api/", (req, res) => {
+    res.json({
+      message: "Hello World"
+    });
+  });
 
 // Export the app for serverless-http
 const handler = serverless(app);
