@@ -1,6 +1,7 @@
 const { query } = require('express');
 const pool = require('../config/db');
 
+require('dotenv').config();
 /*
 Relevant tables 
 

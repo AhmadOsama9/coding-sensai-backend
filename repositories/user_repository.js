@@ -2,6 +2,8 @@
 const pool = require('../config/db');
 const validator = require("validator");
 
+require('dotenv').config();
+
 // Not using ORM makes things difficult and less secure
 // But makes it atleast trice as fast
 

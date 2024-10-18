@@ -2,6 +2,8 @@ const axios = require("axios");
 const crypto = require("crypto");
 const payment_service = require("../services/payment_service");
 
+require('dotenv').config();
+
 const create_cryptomus_recurring_payment = async (req, res) => {
     try {
         const amount = "15"; // Consider making this dynamic based on user or plan

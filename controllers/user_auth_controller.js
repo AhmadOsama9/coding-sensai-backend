@@ -1,6 +1,7 @@
 const user_service = require('../services/user_service');
 const crypto = require('crypto');
 
+require('dotenv').config();
 // const secretKey = process.env.CRYPTO_SECRET;
 
 // // Function to encrypt the token
