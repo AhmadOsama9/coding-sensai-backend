@@ -6,6 +6,8 @@ import serverless from "serverless-http";
 // Load environment variables
 dotenv.config();
 
+console.log("the google clientId is: ", process.env.GOOGLE_CLIENT_ID); 
+
 // Import authentication strategies
 import "./auth/google_strategy.js";
 import "./auth/github_strategy.js";
@@ -60,9 +62,9 @@ app.get("/api/", (req, res) => {
 export const handler = serverless(app);
 
 // For local testing
-if (process.env.LOCAL_TEST) {
-  const port = process.env.PORT || 3000;
-  app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-  });
-}
+// if (process.env.LOCAL_TEST) {
+//   const port = process.env.PORT || 3000;
+//   app.listen(port, () => {
+//     console.log(`Server is running on port: ${port}`);
+//   });
+// }
