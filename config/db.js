@@ -1,5 +1,8 @@
 // name: coding-sensai-db
 // pass: cbS2P&RqWR9*u2
+// username: postgres
+// port: 5432
+// AWS KMS key: alias/aws/rds
 const { Pool } = require('pg');
 require('dotenv').config();
 
