@@ -109,7 +109,9 @@ CREATE TABLE "user_common_mistake_completions" (
 -- The quizzes and questions table remains the same with related_type 'common_mistake'
 */
 
-const pool = require("../config/db");
+const { initPool } = require("../config/db");
+
+const pool = initPool();
 
 const {
   get_random_questions_for_quiz,

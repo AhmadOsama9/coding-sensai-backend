@@ -19,8 +19,9 @@ CREATE TABLE "code_example_codes" (
 );
 
 */
+const { initPool } = require("../config/db");
 
-const pool = require("../config/db");
+const pool = initPool();
 
 // So we need a function to fetch all code examples for a given topic_id
 const get_code_by_id = async (code_id) => {
@@ -47,6 +48,8 @@ const get_code_by_id = async (code_id) => {
         throw err;
     }
 }
+
+
 
 module.exports = {
     get_code_by_id

@@ -1,5 +1,7 @@
 const { query } = require('express');
-const pool = require('../config/db');
+const { initPool } = require("../config/db");
+
+const pool = initPool();
 
 require('dotenv').config();
 /*

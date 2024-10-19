@@ -1,5 +1,7 @@
 // userRepository.js
-const pool = require('../config/db');
+const { initPool } = require("../config/db");
+
+const pool = initPool();
 const validator = require("validator");
 
 require('dotenv').config();
