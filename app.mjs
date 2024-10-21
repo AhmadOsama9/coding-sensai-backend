@@ -39,6 +39,11 @@ app.use((req, res, next) => {
   authenticateToken(req, res, next);
 });
 
+// Mostly will remove the /api from here
+// And use it in the custome domain instead
+// Or use api.codingsensai.dev
+
+
 // Routes
 app.use("/api/user/auth", (await import("./routes/user_auth_routes.js")).default);
 app.use("/api/payment", (await import("./routes/payment_routes.js")).default);
