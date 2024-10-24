@@ -19,6 +19,8 @@ app.use(express.json());
 app.use(cors({
   origin: [
     "http://localhost:5173",
+    "https://codingsensai.dev",
+    "https://www.codingsensai.dev",
   ]
 }));
 

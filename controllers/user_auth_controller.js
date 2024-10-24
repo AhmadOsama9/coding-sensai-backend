@@ -35,6 +35,8 @@ const auth_callback = async (req, res) => {
         // Encrypt the token before sending it in the URL
         // const encryptedToken = encrypt(token);
 
+        console.log("the redirect url is: ", process.env.FRONTEND_REDIRECT_URL);
+
         // Redirect to frontend with encrypted token
         return res.redirect(`${process.env.FRONTEND_REDIRECT_URL}?token=${token}&expires_in=${expires_in}&username=${username}&image_url=${profileImageUrl}`);
     } catch (error) {
