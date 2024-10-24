@@ -25,6 +25,9 @@ require('dotenv').config();
 // OAuth callback
 const auth_callback = async (req, res) => {
     try {
+
+        console.log("calling the auth callback function");
+
         if (!req.user || !req.user.email) {
             throw new Error('Invalid Google profile information');
         }
