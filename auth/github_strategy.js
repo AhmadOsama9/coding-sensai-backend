@@ -28,6 +28,7 @@ passport.use(new GitHubStrategy({
       const userEmail = primaryEmail ? primaryEmail.email : null;
       const profileImageUrl = _json.avatar_url;  
 
+      console.log("Github strategy called!!!");
       console.log("Github Profile: ", profile);
 
       return cb(null, {

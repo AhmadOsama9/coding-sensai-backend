@@ -13,6 +13,7 @@ passport.use(new GoogleStrategy({
     const userEmail = emails[0].value;
     const profileImageUrl = _json.picture; 
 
+    console.log("Google strategy called!!!");
     console.log("Google Profile: ", profile);
     return cb(null, {
       username: displayName,
