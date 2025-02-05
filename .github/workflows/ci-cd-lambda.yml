@@ -21,31 +21,5 @@ jobs:
         with:
           node-version: '18'  # Use the Node.js version that matches your Lambda runtime
 
-      # Step 3: Install any dependencies
-      # If your Lambda function has no dependencies, you can skip this step
-      - name: Install dependencies
-        run: npm install
-
-      # Step 4: Zip the Lambda function code
-      - name: Zip Lambda function
-        run: zip -r lambda_function.zip .
-
-      # Step 5: Configure AWS credentials from GitHub secrets
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1  # Adjust region if needed
-
-      # Step 6: Deploy Lambda function by updating the function code
-      - name: Deploy Lambda function
-        run: |
-          aws lambda update-function-code \
-            --function-name my-express-app \
-            --zip-file fileb://lambda_function.zip
-
-# So I didn't add any tests but I plan to do so if possible
-# I could have just made sure that the server run but if it runs locally why take resources to make sure 
-# again but yeah sometimes unexpected scenarios can happen but whatever
-
+# I already removed the depolyment so no need to push to aws
+# but I will just leave it as it is.
