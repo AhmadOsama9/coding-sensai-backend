@@ -1,6 +1,4 @@
-const { initPool } = require("../config/db");
-
-const pool = initPool();
+const pool = require('../config/db');
 
 const {
   get_milestones_for_topic,

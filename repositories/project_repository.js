@@ -69,9 +69,7 @@ CREATE TABLE "user_topic_completions" (
  * 
  */
 
-const { initPool } = require("../config/db");
-
-const pool = initPool();
+const pool = require("../config/db");
 
 // So the first function we need is to check if the user has passed all the topics in the course
 // then he will be able to access the project

@@ -1,6 +1,4 @@
-const { initPool } = require("../config/db");
-
-const pool = initPool();
+const pool = require('../config/db');
 
 /*
  1- If Successful, we will update the user_payments table with the payment status as success

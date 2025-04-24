@@ -68,7 +68,7 @@ const get_user_enrolled_courses = async (req, res) => {
     try {
         console.log("get_started_courses");
         const { user_id } = req.user;
-        const courses = await course_service.get_started_courses(user_id);
+        const courses = await course_service.get_user_enrolled_courses(user_id);
 
         res.status(200).json(courses);
 

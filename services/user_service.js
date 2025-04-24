@@ -14,7 +14,7 @@ const authenticate_or_register_auth_user = async ({ username, email, providerId,
             user = await user_repository.create_auth_user({ username, email, providerId, provider, profileImageUrl });
         }
     
-        return generateToken(user.id);
+        return generateToken(user.id, "user");
     } catch(err) {
         console.error('Error during user authentication or registration: ', err);
         throw new Error('Error during user authentication or registration');

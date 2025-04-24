@@ -1,6 +1,5 @@
 const crypto = require('crypto');
 
-require('dotenv').config();
 
 // Middleware for IP verification
 const verify_ip = (req, res, next) => {

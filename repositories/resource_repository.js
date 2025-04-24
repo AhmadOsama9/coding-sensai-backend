@@ -22,9 +22,7 @@ CREATE TABLE "resources" (
   FOREIGN KEY ("topic_id") REFERENCES "topics" ("id") ON DELETE CASCADE
 );
 */
-const { initPool } = require("../config/db");
-
-const pool = initPool();
+const pool = require("../config/db");
 
 // So we need a function to fetch all resources for a given topic_id
 const fetch_resource_by_topic_id = async (topic_id) => {

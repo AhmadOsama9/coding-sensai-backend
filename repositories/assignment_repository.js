@@ -22,10 +22,7 @@ CREATE TABLE "user_assignment_completions" (
 );
  */
 
-const { initPool } = require("../config/db");
-
-const pool = initPool();
-
+const pool = require("../config/db");
 
 // so functions will mostly be to get an assignment by or without an id but 
 // with the topic id cause each topic has only one assignment

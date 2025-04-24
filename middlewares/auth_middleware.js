@@ -1,25 +1,20 @@
 const jwt = require("jsonwebtoken");
-
-require('dotenv').config();
-
 const { JWT_SECRET } = process.env;
 
-
-
 const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers["authorization"];
-    const token = authHeader && authHeader.split(" ")[1];
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
 
-    if (token == null) return res.sendStatus(401);
+  if (token == null) return res.sendStatus(401);
 
-    jwt.verify(token, JWT_SECRET, (err, user) => {
-        if (err) {
-            console.log("Error in authenticateToken: ", err);
-            return res.status(403).json({ error: "Invalid token, make suer you are logged in" });
-        }
-        req.user = user;
-        next();
-    });
+  jwt.verify(token, JWT_SECRET, (err, decoded) => {
+    if (err) {
+      console.log("Error in authenticateToken:", err);
+      return res.status(403).json({ error: "Invalid token. Make sure you are logged in." });
+    }
+    req.user = decoded; // Attach full payload, including role
+    next();
+  });
 };
 
 module.exports = { authenticateToken };

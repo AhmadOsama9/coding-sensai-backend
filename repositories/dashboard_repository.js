@@ -1,9 +1,6 @@
 const { query } = require('express');
-const { initPool } = require("../config/db");
+const pool = require('../config/db');
 
-const pool = initPool();
-
-require('dotenv').config();
 /*
 Relevant tables 
 
@@ -151,13 +148,18 @@ const create_daily_points = async (user_id, date) => {
         const current_date_midnight = new Date(current_date.setHours(0, 0, 0, 0));
 
         if (result.rows.length > 0) {
-            const { last_login_date } = result.rows[0];
+            const { last_login_date, current_streak, max_streak } = result.rows[0];
             const last_login_midnight = new Date(new Date(last_login_date).setHours(0, 0, 0, 0));
             const difference_in_days = (current_date_midnight - last_login_midnight) / (1000 * 60 * 60 * 24);
 
             if (difference_in_days === 1) {
                 // Increment streak as the user logged in consecutively
                 await client.query("UPDATE login_streaks SET current_streak = current_streak + 1, last_login_date = $1 WHERE user_id = $2", [current_date, user_id]);
+                // so we will check for the max streak here
+                if (current_streak + 1 > max_streak) {
+                    await client.query("UPDATE login_streaks SET max_streak = $1 WHERE user_id = $2", [current_streak + 1, user_id]);
+                }
+                
             } else if (difference_in_days > 1) {
                 // Reset streak if there is a gap larger than a day
                 await client.query("UPDATE login_streaks SET current_streak = 1, last_login_date = $1 WHERE user_id = $2", [current_date, user_id]);

@@ -82,9 +82,7 @@ CREATE TABLE "topics" (
 
 */
 
-const { initPool } = require("../config/db");
-
-const pool = initPool();
+const pool = require("../config/db");
 
 const {
 
